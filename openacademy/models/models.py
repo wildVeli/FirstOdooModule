@@ -22,7 +22,7 @@ class Course (models.Model):
     description = fields.Text()
     
     responsible_id = fields.Many2one('res.users',ondelete='set null', string="Responsible",index=True)
-    sessions_ids=fields.One2many('openacademy.sesion','course_id',string="Sessions")
+    sessions_ids=fields.One2many('openacademy.session','course_id',string="Sessions")
     
     
 

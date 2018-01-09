@@ -44,10 +44,10 @@
             <field name="name">course.tree</field>
             <field name="model">openacademy.course</field>
             <field name="arch" type="xml">
-                <search>
+                <tree>
                     <field name="name"/>
                     <field name="responsible_id"/>
-                </search>
+                </tree>
             </field>
         </record>
         <!--Tree Session view-->
@@ -55,10 +55,10 @@
             <field name="name">session.tree</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
-                <search>
+                <tree string="Session Tree">
                     <field name="name"/>
                     <field name="course_id"/>
-                </search>
+                </tree>
             </field>
         </record>
         <!--Action de cursos-->
@@ -95,7 +95,6 @@
                             <field name="instructor_id"/>
                         </group>
                         <group>
-                            <field name="name"/>
                             <field name="start_date"/>
                             <field name="duration"/>
                             <field name="seats"/>
@@ -105,14 +104,17 @@
             </field>            
         </record>
         <!--Action of sessions -->
-            <record model="ir.actions.act_window" id="session_list_action">
-                <field name="name">Sessions</field>
-                <field name="res_model">openacademy.session</field>
-                <field name="view_type">form</field>
-                <field name="view_mode">
-                    tree,form
-                </field>
-            </record>
-            <menuitem id="session_menu" name="Sessions" parent="openacademy_menu" />
+        <record model="ir.actions.act_window" id="session_list_action">
+            <field name="name">Sessions</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">
+                tree,form
+            </field>
+        </record>
+        <menuitem id="session_menu" 
+            name="Sessions" 
+            parent="openacademy_menu" 
+            action="session_list_action" />
     </data>
 </odoo>
