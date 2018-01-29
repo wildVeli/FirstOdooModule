@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <!--form view of activities-->  
+        <record model="ir.ui.view" id="activity_form_view">
+            <field name="name">activity.form</field>
+            <field name="model">fctmanagement.activity</field>
+            <field name="arch" type="xml">
+                <form string="Activity Form">
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="duration"/>
+                            <field name="description"/>
+                            <field name="remarks"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> 
+          <!--Personalized view Search description of acitivties per pupil-->     
+        <record model="ir.ui.view" id="course_search_view">
+            <field name="name">activity.search</field>
+            <field name="model">fctmanagement.activity</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="owner"/>
+                    <field name="company"/>
+                </search>
+            </field>
+        </record>
+        <!--Tree activities view-->
+        <record model="ir.ui.view" id="activity_tree_view">
+            <field name="name">activity.tree</field>
+            <field name="model">fctmanagement.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Activity Tree">
+                            <field name="owner"/>
+                            <field name="date"/>
+                            <field name="duration"/>
+                            <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <!--Action of activities-->
+        <record model="ir.actions.act_window" id="fctmanagement_list_action" >
+            <field name="name">Activity</field>
+            <field name="res_model">fctmanagement.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create the first activity
+                </p>           
+            </field>
+        </record>
+
+        <!--menus-->
+        <menuitem id="main_fctmanagement_menu"
+            name="FCT management"/>
+        <menuitem id="fctmanagement_menu"
+            name="FCT management"
+            parent="main_fctmanagement_menu"/>
+        <menuitem id=""
+            name="Activities"
+            parent="fctmanagement_menu"
+            action="fctmanagement_list_action"/>
+    </data>
+</odoo>
