@@ -17,24 +17,26 @@
                 </form>
             </field>
         </record> 
-          <!--Personalized view Search description of acitivties per pupil-->     
-        <record model="ir.ui.view" id="course_search_view">
+          <!--Personalized view Search description of acitivties per pupil
+          
+        <record model="ir.ui.view" id="FCT_search_view">
             <field name="name">activity.search</field>
             <field name="model">fctmanagement.activity</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="owner"/>
+                    <field name="owner"/> 
                     <field name="company"/>
                 </search>
             </field>
         </record>
+        -->     
         <!--Tree activities view-->
         <record model="ir.ui.view" id="activity_tree_view">
             <field name="name">activity.tree</field>
             <field name="model">fctmanagement.activity</field>
             <field name="arch" type="xml">
                 <tree string="Activity Tree">
-                            <field name="owner"/>
+                      <!--      <field name="owner"/> -->
                             <field name="date"/>
                             <field name="duration"/>
                             <field name="description"/>

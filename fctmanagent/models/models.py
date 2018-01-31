@@ -18,7 +18,7 @@ class Tutor (models.Model):
     _inherit = 'res.users'
     
     isTutor = fields.Boolean()
-    pupils = fields.Many2one('res.users',ondelete='set null',string="Pupil",index=True)
+    #pupils = fields.One2many('res.users','tutor',string="Tutor")
     
 class Pupil (models.Model):
     _inherit = 'res.users'
@@ -26,16 +26,16 @@ class Pupil (models.Model):
     
     isPupil = fields.Boolean()
     
-    activities = fields.One2many('fctmanagement.activity','owner',string="Activity")
-    tutor = fields.One2many('res.users','pupils',string="Tutor")
-    company = fields.One2many('res.partner','pupils',string="FCT Partner")
+    #activities = fields.One2many('fctmanagement.activity','owner',string="Activity")
+    tutor = fields.Many2one('res.users',ondelete='set null',string="Tutor",index=True)
+    company = fields.Many2one('res.partner',ondelete='set null',string="Company",index=True)
     
 class FCTPartner (models.Model):
     _inherit = 'res.partner'
     
     isFCTPartner = fields.Boolean()
     
-    pupils = fields.Many2one('res.users',ondelete='set null',string="Pupil",index=True)
+    pupils = fields.One2many('res.users','company',string="Pupils")
 
 class Activity (models.Model):
     _name = 'fctmanagement.activity'
