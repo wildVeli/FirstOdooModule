@@ -1,5 +1,18 @@
 <odoo>
     <data>
+        <!--tutor checkbox res.users-->
+        <record model="ir.ui.view" id="tutor_form_view">
+            <field name="name">tutor.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <field name="sel_groups_3_4" position="after">
+                    <field name="isTutor"/>
+                    <field name="isPupil"/>
+                </field>
+            </field>
+        </record> 
+
         <!--form view of activities-->  
         <record model="ir.ui.view" id="activity_form_view">
             <field name="name">activity.form</field>
@@ -17,19 +30,27 @@
                 </form>
             </field>
         </record> 
-          <!--Personalized view Search description of acitivties per pupil
-          
+          <!--Personalized view Search description of PUPILS PER COMPANY  -->        
         <record model="ir.ui.view" id="FCT_search_view">
+            <field name="name">fct.search</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="company"/>
+                </search>
+            </field>
+        </record>   
+     <!--Personalized view Search description of activities per pupil  -->        
+        <record model="ir.ui.view" id="activity_search_view">
             <field name="name">activity.search</field>
             <field name="model">fctmanagement.activity</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="owner"/> 
-                    <field name="company"/>
+
                 </search>
             </field>
-        </record>
-        -->     
+        </record>   
         <!--Tree activities view-->
         <record model="ir.ui.view" id="activity_tree_view">
             <field name="name">activity.tree</field>
